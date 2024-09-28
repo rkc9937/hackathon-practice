@@ -3,12 +3,39 @@
 // import '@fontsource/roboto/500.css';
 // import '@fontsource/roboto/700.css';
 import Button from '@mui/material/Button';
+import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import Landing from './Landing';
+import Sender from './Sender';
+import { useEffect } from 'react';
+
 
 function App() {
+
+    useEffect(() => {
+        axios({
+            method: 'GET',
+            url: 'http://0.0.0.0:8000/healthCheck',
+        })
+        .then( (response) => {
+            console.log(response.data);
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
+        
+    });
+
+
     return (
-        <div>
-            <Button variant="contained">Hello World</Button>
-        </div>
+       
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/submit" element={<Sender />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 export default App;
