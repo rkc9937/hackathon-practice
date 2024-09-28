@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 
 function Sender() {
-    const [img, setImg] = useState([]);
+    const [img, setImg] = useState(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];  // Get the selected file
@@ -13,9 +13,7 @@ function Sender() {
           };
           reader.readAsDataURL(file);  // Read the file as a data URL
         }
-
         console.log(img)
-
       };
 
     function sendImageToServer() {
