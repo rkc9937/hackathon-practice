@@ -1,0 +1,10 @@
+FROM python:3
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+WORKDIR /backend
+
+RUN pip install django django-cors-headers
+
+COPY . .
+
+EXPOSE 8000
