@@ -20,5 +20,6 @@ from django.urls import include, path
 from api import views
 
 urlpatterns = [
-    path('healthcheck/', views.healthcheck, name='healthcheck')
+    path('healthcheck/', views.healthcheck, name='healthcheck'),
+    path('imgSearch', views.imgSearch, name='imgSearch')
 ]
