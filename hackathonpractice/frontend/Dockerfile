@@ -4,8 +4,8 @@ WORKDIR /frontend
 
 COPY . .
 
-run npm install
+RUN npm install
 
 EXPOSE 3000
 
-cmd ["npm", "start"]
+CMD ["npm", "start"]
