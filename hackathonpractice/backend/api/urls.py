@@ -21,5 +21,5 @@ from api import views
 
 urlpatterns = [
     path('healthcheck/', views.healthcheck, name='healthcheck'),
-    path('imgSearch', views.imgSearch, name='imgSearch')
+    path('imgSearch/', views.imgSearch, name='imgSearch')
 ]
