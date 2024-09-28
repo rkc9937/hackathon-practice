@@ -1,14 +1,10 @@
 import {useState, useEffect} from 'react';
-import {Button, Container, Input} from '@mui/material/';
+import {Button, Container, Input, Card, CardContent, CardHeader, Typography} from '@mui/material/';
 import axios from 'axios';
 
 function Sender() {
     const [img, setImg] = useState(null);
-    const [items, setItems] = useState([{
-            'item_name': '',
-            'item_description': '',
-            'item_price': ''
-    }]);
+    const [items, setItems] = useState([]);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];  // Get the selected file
@@ -47,7 +43,7 @@ function Sender() {
         axios(
             {
                 method: 'POST',
-                url: 'http://0.0.0.0:8000/api/imgSearch/',
+                url: 'http://localhost:8000/api/imgSearch/',
                 data: {
                     img: img
                 }
@@ -87,15 +83,22 @@ function Sender() {
                 <Button  variant="contained" onClick={sendImageToServer}>Send Image</Button> 
             </div>
             { console.log(items) }
-            {items.map((item) => {
-                return (
-                    <Container>
-                        <h1>{item.name}</h1>
-                        <h1>{item.price}</h1>
-                        <h1>{item.description}</h1>
-                    </Container>
-                )
-            })}
+            <div id="items">
+            {items.length > 1 ?  
+                items.map((item) => {
+                    return (
+                        <Container>
+                            <Card>
+                                <CardHeader title={item.name} />
+                                <CardContent><Typography variant="body2" sx={{ color: 'text.secondary' }}>{item.price}</Typography></CardContent>
+                                <CardContent><Typography>{item.description}</Typography></CardContent>
+                            </Card>
+                        </Container>
+                    )
+                })
+                : null
+            }
+            </div>
         </div>
     )
 }
