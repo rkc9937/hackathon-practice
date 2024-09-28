@@ -7,3 +7,8 @@ from django.http import HttpResponse
 @api_view(['POST'])
 def healthcheck(request):
     return HttpResponse({"message": "Got some data!"})
+
+@api_view(['POST'])
+def imgSearch(request):
+    return HttpResponse({"message": "Got some data!"})
+
