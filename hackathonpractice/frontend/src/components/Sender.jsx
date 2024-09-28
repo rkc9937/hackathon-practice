@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Button, Container} from '@mui/material/';
+import {Button, Container, Input} from '@mui/material/';
 import axios from 'axios';
 
 function Sender() {
@@ -42,7 +42,7 @@ function Sender() {
 
     return(
         <div>
-            <input type="file" accept="image/*" onChange={handleImageChange} />  {/* File input */}
+            <Input type="file" accept="image/*" onChange={handleImageChange} />  {/* File input */}
             { console.log(img) }
             <div id="send-image">
 

@@ -16,3 +16,17 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.root {
+  max-width: 70rem;
+}
+
+article {
+  /* max-width: 70rem; */
+}
+
+#main-submit {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
