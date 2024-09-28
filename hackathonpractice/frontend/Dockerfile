@@ -1,18 +1,14 @@
-FROM node:14
+FROM node:22
 
 WORKDIR /frontend
 
-COPY . .
+COPY package.json /frontend/package.json
+COPY package-lock.json /frontend/package-lock.json
 
 RUN npm install
+RUN npm install react-scripts
 
-# RUN npm install react-scripts
-
-# RUN npm install @mui/material @emotion/react @emotion/styled
-
-# RUN npm install react-router-dom
-
-# RUN npm install axios
+COPY . ./frontend
 
 EXPOSE 3000
 
