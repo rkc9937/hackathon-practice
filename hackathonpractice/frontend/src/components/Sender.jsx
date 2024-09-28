@@ -15,12 +15,12 @@ function Sender() {
         if (file) {
           const reader = new FileReader();  // Create a FileReader to read the file
           reader.onloadend = () => {
-            setImg(reader.result);  // Set the image state to the result of the FileReader (base64 or URL)
+            console.log(reader.result);  // Log the result of the FileReader (base64 or URL)
+            setImg(reader.result);  // Set the result to the img state
           };
           reader.readAsDataURL(file);  // Read the file as a data URL
         }
-        console.log(img)
-      };
+    };
 
     function sendImageToServer() {
         axios(
@@ -35,13 +35,15 @@ function Sender() {
             //Once we get a response from the server, set the items state to the response data
             console.log(response.data);
             setItems(response.data); 
+        }).catch( (error) => {
+            console.log(error);
         });
-
     }
 
     return(
         <div>
-            <input type="file" multiple accept='img/*' onChange={handleImageChange}/>
+            <input type="file" accept="image/*" onChange={handleImageChange} />  {/* File input */}
+            { console.log(img) }
             <div id="send-image">
 
                 <Button  variant="contained" onClick={sendImageToServer}>Send Image</Button> 
