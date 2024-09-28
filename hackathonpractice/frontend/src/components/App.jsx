@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://0.0.0.0:8000/healthCheck',
+            url: 'http://0.0.0.0:8000/api/imgSearch/',
         })
         .then( (response) => {
             console.log(response.data);

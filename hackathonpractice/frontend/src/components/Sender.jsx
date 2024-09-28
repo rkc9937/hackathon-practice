@@ -5,9 +5,9 @@ import axios from 'axios';
 function Sender() {
     const [img, setImg] = useState(null);
     const [items, setItems] = useState([{
-            'name': '',
-            'price': '',
-            'description': ''
+            'item_name': '',
+            'item_description': '',
+            'item_price': ''
     }]);
 
     const handleImageChange = (e) => {
@@ -22,11 +22,25 @@ function Sender() {
         }
     };
 
+    function getItems() {
+        axios({
+            method: 'GET',
+            url: 'http://0.0.0.0:8000/api/imgSearch/'
+        }).then((response) => {
+            //Once we get a response from the server, set the items state to the response data
+            console.log(response.data);
+            setItems(response.data);
+        }).catch( (error) => {
+            console.log(error);
+        });
+
+    }
+
     function sendImageToServer() {
         axios(
             {
                 method: 'POST',
-                url: '/img/',
+                url: 'http://0.0.0.0:8000/api/imgSearch/',
                 data: {
                     img: img
                 }
@@ -34,7 +48,9 @@ function Sender() {
         ).then((response) => {
             //Once we get a response from the server, set the items state to the response data
             console.log(response.data);
-            setItems(response.data); 
+            if(response.status === 200) {
+                getItems();
+            }
         }).catch( (error) => {
             console.log(error);
         });
