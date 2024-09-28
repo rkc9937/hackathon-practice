@@ -8,7 +8,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function Landing(){
     return(
-        <h1>Hello World</h1>
+        <div>
+            <h1>Hello World</h1>
+            <Button variant="text" href="/submit">Submit an item for search</Button>
+        </div>
     )
 }
 export default Landing;
