@@ -1,7 +1,8 @@
-import Button from '@mui/material/Button';
-import axios from 'axios';
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import LabelBottomNavigation from './Landing_Subcomponents/LabelBottomNavigation.jsx';
+import MainContent from './Landing_Subcomponents/MainContent.jsx';
+import ButtonAppBar from './Landing_Subcomponents/ButtonAppBar.jsx';
 // import Landing from './Landing';
 // import Sender from './Sender';
 
@@ -9,9 +10,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 function Landing(){
     return(
         <article>
-           <div id="main-submit">
-                <h1>Our App</h1>
-                <Button variant="text" href="/submit">Submit an item for search</Button>
+            <div>
+                <ButtonAppBar />
+            </div>
+
+           <div>
+                <MainContent />
+           </div>
+
+           <div className='Footer'>
+                <LabelBottomNavigation />
            </div>
         </article>
     )
