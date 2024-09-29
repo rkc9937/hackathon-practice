@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://0.0.0.0:8000/healthCheck',
+            url: 'http://localhost:8000/api/healthcheck/',
         })
         .then( (response) => {
             console.log(response.data);

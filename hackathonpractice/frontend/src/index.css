@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,19 +7,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 #send-image{
   display: flex;
   justify-content: center;
 }
 
-.root {
+/* #bo {
   max-width: 70rem;
+} */
+
+#root > div > *{
+  margin-block-start: 2rem;
 }
 
 article {
@@ -31,12 +36,3 @@ article {
   justify-content: center;
   gap: 1rem;
 }
- .Footer{
-  background-color: white;
-  justify-content: center;
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
- }
