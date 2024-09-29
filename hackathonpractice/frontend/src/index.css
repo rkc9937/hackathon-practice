@@ -36,3 +36,13 @@ article {
   justify-content: center;
   gap: 1rem;
 }
+
+.Footer{
+  justify-content: center;
+  left: 0%;
+  right: 0%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  margin: auto 0;
+}
