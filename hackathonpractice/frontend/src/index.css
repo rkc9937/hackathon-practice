@@ -1,6 +1,7 @@
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 75rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -31,13 +32,30 @@ article {
 }
 
 #main-submit {
-  display: flex;
+  display: flexbox;
+  text-align: center;
   justify-content: center;
   gap: 1rem;
 }
 
-#items {
+.Footer{
+  justify-content: center;
+  left: 0%;
+  right: 0%;
+  position: absolute;
+  bottom: 0;
   display: flex;
+  margin: auto 0;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: start; */
   gap: 1rem;
   flex-direction: column;
+}
+
+.filter-option > * {
+  gap: 1rem;
 }
