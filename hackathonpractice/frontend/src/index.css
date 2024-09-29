@@ -52,10 +52,17 @@ article {
   display: flex;
   justify-content: flex-start;
   /* align-items: start; */
-  gap: 1rem;
+  gap: 1.5rem;
   flex-direction: column;
 }
 
 .filter-option > * {
   gap: 1rem;
+}
+
+
+#items {
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
 }

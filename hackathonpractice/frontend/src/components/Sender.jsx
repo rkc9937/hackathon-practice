@@ -11,7 +11,8 @@ const CustomFormControl = styled(FormControl)`
 function Sender() {
     const [img, setImg] = useState(null);
     const [items, setItems] = useState([]);
-    const [priceFilter, setPriceFilter] = useState(0);
+    const [priceDollarFilter, setPriceDollarFilter] = useState(0);
+    const [sortByFilter, setsortByFilter] = useState('');
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];  // Get the selected file
@@ -45,6 +46,27 @@ function Sender() {
     //     });
 
     // }
+
+    function applyFilters() {
+        // console.log("In applyFilters");
+        console.log(priceDollarFilter);
+        console.log(sortByFilter);
+        //modify the items array based on the filters
+        let newItems = items;
+
+        //Sort by price
+        if(sortByFilter === 'low-to-high') {
+            newItems.sort((a, b) => {
+                return a.price - b.price;
+            });
+        } else if(sortByFilter === 'high-to-low') {
+            newItems.sort((a, b) => {
+                return b.price - a.price;
+            });
+        }
+        setItems(newItems);
+        console.log(items);
+    }
 
     function sendImageToServer() {
         axios(
@@ -90,21 +112,21 @@ function Sender() {
                 <Button  variant="contained" onClick={sendImageToServer}>Send Image</Button> 
             </div>
             { console.log(items) }
-            {items.length > 1 ?
+            {items.length > 0 ?
                 <div class="filter-options">
                     <Typography variant="h5">Filter Options</Typography>
                     <CustomFormControl classes={'flexRow'}>
                         <InputLabel htmlFor="my-input">Price</InputLabel>
-                        <Input color={'secondary'} id="my-input" aria-describedby="my-helper-text" />
+                        <Input color={'secondary'} id="my-input" aria-describedby="my-helper-text" onChange={(e) => setPriceDollarFilter(e.target.value)} />
                         <Select>
-                            <MenuItem value={1}>Price Lowest to Highest</MenuItem>
-                            <MenuItem value={2}>Price Highest to Lowest</MenuItem>
+                            <MenuItem value={1} onClick={() => setsortByFilter('low-to-high')}>Price Lowest to Highest</MenuItem>
+                            <MenuItem value={2} onClick={() => setsortByFilter('high-to-low')}>Price Highest to Lowest</MenuItem>
                         </Select>
-                        <Button variant="contained">Apply Filter</Button>
+                        <Button variant="contained" onClick={applyFilters}>Apply Filters</Button>
                     </CustomFormControl>
                 </div> : null }
             <div id="items">
-            {items.length > 1 ?  
+            {items.length > 0 ?  
                 items.map((item) => {
                     return (
                         <Container>
