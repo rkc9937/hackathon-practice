@@ -26,7 +26,17 @@ article {
 }
 
 #main-submit {
-  display: flex;
+  display: flexbox;
+  text-align: center;
   justify-content: center;
   gap: 1rem;
 }
+ .Footer{
+  background-color: white;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+ }
