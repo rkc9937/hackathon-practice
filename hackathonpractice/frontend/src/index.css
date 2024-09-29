@@ -1,6 +1,7 @@
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 75rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -40,4 +41,16 @@ article {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: start; */
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.filter-option > * {
+  gap: 1rem;
 }

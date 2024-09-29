@@ -1,10 +1,17 @@
 import {useState, useEffect} from 'react';
-import {Button, Container, Input, Card, CardContent, CardHeader, Typography} from '@mui/material/';
+import {Button, Container, Input, Card, CardContent, CardHeader, Typography, TextField, MenuItem, Select, FormControl, InputLabel} from '@mui/material/';
+import { styled } from '@mui/material/styles';
 import axios from 'axios';
+
+const CustomFormControl = styled(FormControl)`
+    flex-direction: row;
+    gap: 1rem;
+`;
 
 function Sender() {
     const [img, setImg] = useState(null);
     const [items, setItems] = useState([]);
+    const [priceFilter, setPriceFilter] = useState(0);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];  // Get the selected file
@@ -76,21 +83,34 @@ function Sender() {
 
     return(
         <div>
-            <Input type="file" accept="image/*" onChange={handleImageChange} />  {/* File input */}
-            { console.log(img) }
-            <div id="send-image">
 
+            <div id="send-image">
+                <Input type="file" accept="image/*" onChange={handleImageChange} />  {/* File input */ }
+                { console.log(img) }
                 <Button  variant="contained" onClick={sendImageToServer}>Send Image</Button> 
             </div>
             { console.log(items) }
+            {items.length > 1 ?
+                <div class="filter-options">
+                    <Typography variant="h5">Filter Options</Typography>
+                    <CustomFormControl classes={'flexRow'}>
+                        <InputLabel htmlFor="my-input">Price</InputLabel>
+                        <Input color={'secondary'} id="my-input" aria-describedby="my-helper-text" />
+                        <Select>
+                            <MenuItem value={1}>Price Lowest to Highest</MenuItem>
+                            <MenuItem value={2}>Price Highest to Lowest</MenuItem>
+                        </Select>
+                        <Button variant="contained">Apply Filter</Button>
+                    </CustomFormControl>
+                </div> : null }
             <div id="items">
             {items.length > 1 ?  
                 items.map((item) => {
                     return (
                         <Container>
-                            <Card>
+                            <Card sx={{':hover': { boxShadow: 20,  },}}>
                                 <CardHeader title={item.name} />
-                                <CardContent><Typography variant="body2" sx={{ color: 'text.secondary' }}>{item.price}</Typography></CardContent>
+                                <CardContent><Typography variant="body2" sx={{ color: 'text.secondary' }}>{"$" + item.price}</Typography></CardContent>
                                 <CardContent><Typography>{item.description}</Typography></CardContent>
                             </Card>
                         </Container>
